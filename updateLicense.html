@@ -34,63 +34,15 @@
 
 </style>
 
-<script src="https://js.arcgis.com/3.19/"></script>
+
 <script>
-  var map;
-
-  require([
-      "dojo/_base/array",
-      "dojo/parser",
-      "esri/config",
-      "esri/dijit/editing/Editor",
-      "esri/dijit/editing/TemplatePicker",
-      "esri/layers/FeatureLayer",
-      "esri/map",
-      "dojo/domReady!",
-      "dijit/layout/ContentPane",
-      "dijit/layout/BorderContainer"
-    ],
-    function (arrayUtils, parser, esriConfig, Editor, TemplatePicker, FeatureLayer, Map){
-
-      parser.parse();
-
-      esriConfig.defaults.io.proxyUrl = "/proxy/proxy.ashx";
-
-      map = new Map("mapCanvas", {
-        basemap: "topo",
-        center: [-120.723, 35.165],
-        zoom: 12,
-        slider: false
-      });
-
-      	  
-	  var idBase = new esri.IdentityManagerBase();  
-		var serverInfo = {  
-        "server": "https://sampleserver6.arcgisonline.com",  
-        "tokenServiceUrl": "https://sampleserver6.arcgisonline.com/arcgis/tokens/",
-	"shortLivedTokenValidity" : 60		
-		};  
-		var def = idBase.generateToken(serverInfo, { "username": "user2", "password": "user2", "client": "referer", "referer": document.URL });
-		def.then(function(value){
-		token = value;
-		
-		//add the secure service - token is required
-      var secureLayer = new esri.layers.FeatureLayer("https://sampleserver6.arcgisonline.com/arcgis/rest/services/SaveTheBay/FeatureServer/0?token=" + value.token,
-        {
-          mode: FeatureLayer.MODE_ONDEMAND,
-          outFields: ["*"]
-        });
-      map.addLayers([secureLayer]);
-		
-		});
-	  
-    });
-  </script>
+  document.getElementById("testing").innerHTML = "Hi World~~~~~";
+</script>
 </head>
 
 <body class="claro">
 
-  <h1>Hello World</h1>
+  <h1 id="testing">Hello World</h1>
   
   <div data-dojo-type="dijit/layout/BorderContainer"
     data-dojo-props="design:'headline',gutters:false"
